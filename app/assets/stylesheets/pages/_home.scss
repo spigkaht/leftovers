@@ -1,1 +1,12 @@
 // Specific CSS for your home-page
+.landing {
+  height: 500px;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/030/269/816/large_2x/the-best-foodgraphy-tips-for-beginners-ai-generated-free-photo.jpg");
+  background-size: cover;
+}
+
+.banner h1 {
+  text-align: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.237);
+}
