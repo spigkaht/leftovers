@@ -26,14 +26,33 @@
   padding: 1.5rem;
 }
 
+.form-control {
+  height: 58px;
+}
+
+.fridge-card-container {
+  width: 30%;
+}
+
 .fridge-card {
   border: 2px solid black;
   border-radius: 7px;
   margin: 15px;
   padding: 12px;
-  width: 30%;
+  flex-grow: 1;
+}
+
+.fridge-card-button {
+  width: 94%;
+  margin-left: 14px;
+  margin-bottom: 8px;
 }
 
 .recipe-buttons {
-  margin-top: 20px;
+  margin-top: 50px;
+  margin-right: 5px;
+
+  button {
+    margin-right: 8px;
+  }
 }
