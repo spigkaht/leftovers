@@ -1,9 +1,13 @@
 <%= render "shared/navbar" %>
 <div class="recipes-index-content">
   <div class="recipes-index-card-container">
-    <%= render "shared/card" %>
-    <%= render "shared/card" %>
-    <%= render "shared/card" %>
+    <% if @recipes == false %>
+      <p>You got 99 problems but a recipe card ain't one</p>
+    <% else %>
+      <%= render "shared/card" %>
+      <%= render "shared/card" %>
+      <%= render "shared/card" %>
+    <% end %>
   </div>
   <div class="recipes-index-filters">
   </div>
