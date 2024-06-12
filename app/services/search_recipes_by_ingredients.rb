@@ -7,21 +7,35 @@ class SearchRecipesByIngredients
   end
 
   def call
-    # API CALL
     url = URI("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{format_ingredients}&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
 
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
-
     request = Net::HTTP::Get.new(url)
-
     response = https.request(request)
     results_array = JSON.parse(response.read_body)
+    if results_array["status"] == "failure"
+      return false
+    else
+      id_array = (results_array.map do |results_hash|
+                  results_hash["id"]
+                  end)
+      recipe_ids = id_array.join(',')
 
-    recipe_array = (results_array.map do |result_hash|
-                    Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
-                    end)
-    return recipe_array
+      url = URI("https://api.spoonacular.com/recipes/informationBulk?ids=#{recipe_ids}&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
+
+      https = Net::HTTP.new(url.host, url.port)
+      https.use_ssl = true
+      request = Net::HTTP::Get.new(url)
+      response = https.request(request)
+      results_array = JSON.parse(response.read_body)
+
+      recipe_array = (results_array.map do |result_hash|
+                      Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
+                      end)
+
+      return recipe_array
+    end
   end
 
   def create_recipe(result_hash)
