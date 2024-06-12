@@ -14,7 +14,7 @@ class SearchRecipesByIngredients
     request = Net::HTTP::Get.new(url)
     response = https.request(request)
     results_array = JSON.parse(response.read_body)
-    if results_array["status"] == "failure"
+    if results_array[0].key?("status")
       return false
     else
       id_array = (results_array.map do |results_hash|
