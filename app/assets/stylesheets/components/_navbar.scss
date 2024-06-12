@@ -1,3 +1,16 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: rgb(255, 255, 255);
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
 .recipe-header-card {
   background-color: $my-bg-colour;
   height: 380px;
