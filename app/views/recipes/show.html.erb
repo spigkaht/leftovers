@@ -1,3 +1,46 @@
 <%= render "shared/navbar" %>
 <div class="recipe-container">
+<div class="left-column d-flex">
+
+  <div class="recipe-photo-container">
+    <div class="recipe-photo-card d-flex">
+      <img src="<%= @recipe.image_url %>" alt="photo">
+    </div>
+  </div>
+
+  <div class="recipe-ingredient-container">
+    <div class="recipe-ingredient-card d-flex flex-column">
+      <h3>Ingredients</h3>
+      <div class="recipe-ingredient d-flex">
+       <ul>
+        <li>Slime</li>
+        <li>Potion of weakness</li>
+        <li>Magic dust</li>
+        <li>wherble</li>
+       </ul>
+       </div>
+    </div>
 </div>
+</div>
+<div class="right-column">
+  <div class="recipe-info-container">
+    <div class="recipe-info-card d-flex flex-column">
+    <h3><%=@recipe.title%></h3>
+    <div class="recipe-info d-flex justify-content-evenly">
+      <h5> Cuisine : <%=@recipe.cuisine %> </p>
+      <h5> Serves : <%= @recipe.servings %> </p>
+      <h5> Total Cooktime : <%= @recipe.cook_time %> </h5>
+    </div>
+      <button class="recipe-book-button d-flex align-self-end"> Add to Book</button>
+    </div>
+  </div>
+    <div class="recipe-instructions-container d-flex">
+      <div class="recipe-instructions-card d-flex">
+        <h3>Instructions</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <%#  %>
+  <%#  %>
