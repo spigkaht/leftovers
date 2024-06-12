@@ -1,18 +1,28 @@
+
   <div class="recipe-header-card d-flex justify-content-between">
     <div class="recipe-title d-flex flex-column justify-content-between">
       <h1>TITLETITLETITLE</h1>
-      <form class="d-flex flex-column justify-content-between" role="search">
-        <input class="form-control me-2" type="search" placeholder="Add Ingredient" aria-label="Search">
-        <div class="recipe-buttons d-flex">
-          <button type="submit">Add Ingredent</button>
-          <button>Recipe Book</button>
-        </div>
-      </form>
+        <%= simple_form_for @user_ingredient do |f| %>
+          <%= f.input :ingredient, label:false, placeholder: "Enter ingredient" %>
+          <div class="recipe-buttons d-flex">
+            <%= f.button :submit, "Add Ingredient", class: "ingredient-button" %>
+            <button>Recipe Book</button>
+          </div>
+        <% end %>
     </div>
   <div class="fridge-card-container d-flex flex-column">
-    <div class="fridge-card d-flex">
-      <h2>Your Ingredients</h2>
+    <div class="fridge-card d-flex flex-column">
+      <h3>YOUR INGREDIENTS</h3>
+      <ul id="ingredientsList">
+        <% if current_user.ingredients.any? %>
+          <% current_user.ingredients.each do |ingredient| %>
+            <li class="fridge-ingredient"><%= ingredient.name %></li>
+          <% end %>
+        <% else %>
+          <p>IS EMPTY YAR</p>
+        <% end %>
+      </ul>
     </div>
-    <button class="fridge-card-button">Search Button</button>
+    <button id="fridgeBtn" class="fridge-card-button">Search Button</button>
   </div>
   </div>

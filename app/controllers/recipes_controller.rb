@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @user_ingredient = UserIngredient.new
+    @recipes = SearchRecipesByIngredients.new(current_user).call
   end
 
   def show
