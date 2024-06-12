@@ -1,13 +1,12 @@
-
-.recipe-header-card {
-  background-color: #F7E2CA;
-  margin: 5px;
-  border: 2px solid black;
-  border-radius: 7px;
-  padding: 4px;
-  height: 220px;
-  justify-content: space-between;
-}
+// .recipe-header-card {
+//   background-color: #F7E2CA;
+//   margin: 5px;
+//   border: 2px solid black;
+//   border-radius: 7px;
+//   padding: 4px;
+//   height: 220px;
+//   justify-content: space-between;
+// }
 
 .recipe-title {
   color: black;
@@ -37,3 +36,7 @@ button {
   padding: 10px;
   width: fit-content;
 }
+
+// button & form is changing ALL buttons. should also be in application.scss
+// justify-content can go in bootstrap classes
+// all navbar styles to go into _navbar
