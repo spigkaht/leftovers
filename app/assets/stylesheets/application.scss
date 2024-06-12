@@ -10,3 +10,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/recipes";
+
+.leftovers-container {
+  width: 80vw;
+  margin: 2rem auto 0 auto;
+}
