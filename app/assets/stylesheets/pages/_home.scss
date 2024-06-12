@@ -4,10 +4,62 @@
   height: 500px;
   background-image: url("https://static.vecteezy.com/system/resources/previews/030/269/816/large_2x/the-best-foodgraphy-tips-for-beginners-ai-generated-free-photo.jpg");
   background-size: cover;
+  width: 100%
 }
 
-.banner h1 {
+.landing {
   text-align: center;
   justify-content: center;
+}
+
+.landing h1 {
+  color: white;
+  font-size: calc(1.625rem + 4.5vw);
+  padding-top: 5%;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.237);
+  font-family: "Inria Serif", serif;
+  font-style: normal
+}
+
+.landing h2 {
+  color: white;
+}
+
+.text-container {
+  width: 60vw;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 90px;
+}
+
+.text-container h3 {
+  color: #0e327f;
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel img:not(:first-child) {
+  margin-left: -100%;
+}
+
+@keyframes slide {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.carousel img:first-child {
+  animation: slide 5s infinite alternate;
 }
