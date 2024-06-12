@@ -16,3 +16,19 @@
   width: 80vw;
   margin: 2rem auto 0 auto;
 }
+
+button {
+  background-color: $my-orange;
+  border: 0px;
+  border-radius: 15px;
+  padding: 10px 20px;
+  width: fit-content;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+h2 {
+  font-size: 32px;
+}
