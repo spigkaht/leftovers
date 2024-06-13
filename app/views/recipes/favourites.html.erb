@@ -1,5 +1,11 @@
-allo
 
-<%= @favourites.each do |favourite| %>
-<%= favourite.recipes.first.title %>
+
+<h1>Recipe Book</h1>
+<div class="recipe-favourites-container">
+<% @favourites.each do |favourite| %>
+  <div class="recipe-favourites-card">
+<%= render "shared/card", :recipe => favourite.recipe %>
+      </div>
+    </div>
 <% end %>
+</div>

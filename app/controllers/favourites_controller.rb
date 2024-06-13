@@ -4,12 +4,16 @@ class FavouritesController < ApplicationController
   end
 
   def new
-    @favourite = Favourite.new(favourite_params)
+    @favourite = Favourite.new
   end
 
   def create
     @favourite = Favourite.new(favourite_params)
-    @favourite.save
+    if @favourite.save
+      redirect_to recipes_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -18,6 +22,10 @@ class FavouritesController < ApplicationController
   end
 
   private
+
+  # def set_recipe
+  #   @recipe = Recipe.find(params[:id])
+  # end
 
   def favourite_params
     params.require(:favourite).permit(:user_id, :recipe_id)
