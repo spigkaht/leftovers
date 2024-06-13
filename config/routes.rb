@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :favourites, only: [:index, :new, :create]
     collection do
       get :favourites
-      post :favourites
+      
     end
   end
   resources :favourites, only: [:destroy]
