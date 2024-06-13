@@ -1,14 +1,16 @@
-<div class="recipes-index-card">
+<div class="recipes-index-card" data-controller="favourites">
   <div class="recipes-index-card-content">
     <%= link_to recipe.title, recipe_path(recipe) %>
     <p class="recipes-index-card-text">
       <%= sanitize recipe.summary %>
     </p>
-    <div class="recipes-index-card-info">
+
+    <div class="recipes-index-card-info" data-favourite-target="recipe">
       <p class="recipes-index-card-servings"><%= recipe.servings %> servings</p>
       <i class="fa-solid fa-circle recipes-index-card-heart-circle"></i>
       <p class="recipes-index-card-time"><%= recipe.cook_time %> mins</p>
-      <i class="fa-regular fa-heart recipes-index-card-heart"></i>
+      <i data-action="click->create-favourite#createFavourite" class="fa-regular fa-heart recipes-index-card-heart"></i>
+      <%# <button> <%= link_to "Add to Favourites", new_recipes_favourite_path(recipe_id:[:recipe_id]), method: :post%> 
     </div>
   </div>
   <div class="recipes-index-card-image">
