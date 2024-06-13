@@ -4,13 +4,15 @@
       <%= image_tag @recipe.image_url %>
     </div>
     <div class="recipe-info d-flex flex-column">
-      <h3><%=@recipe.title%></h3>
-      <div class="recipe-info-details d-flex justify-content-evenly">
-        <h5> Cuisine : <%= @recipe.cuisine %> </p>
-        <h5> Serves : <%= @recipe.servings %> </p>
-        <h5> Total Cooktime : <%= @recipe.cook_time %> </h5>
+      <div class="recipe-info-title">
+        <h1><%=@recipe.title%></h1>
       </div>
-      <button class="recipe-book-button d-flex align-self-end"> Add to Book</button>
+      <div class="recipe-info-details d-flex">
+        <p><strong>Cuisine:</strong> <%= @recipe.cuisine %></p>
+        <p><strong>Serves:</strong> <%= @recipe.servings %></p>
+        <p><strong>Total Cooktime:</strong> <%= @recipe.cook_time %></p>
+      </div>
+      <button class="recipe-book-button d-flex align-self-end">Add to Book</button>
     </div>
   </div>
   <div class="recipe-details-container d-flex">
@@ -26,6 +28,7 @@
     </div>
     <div class="recipe-instructions d-flex flex-column">
       <h3>Instructions</h3>
+      <%= sanitize @recipe.method %>
     </div>
   </div>
 </div>
