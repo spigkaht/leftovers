@@ -9,11 +9,8 @@ class FavouritesController < ApplicationController
 
   def create
     @favourite = Favourite.new(favourite_params)
-    if @favourite.save
-      redirect_to recipes_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @favourite.save
+    redirect_to recipes_path
   end
 
   def destroy
