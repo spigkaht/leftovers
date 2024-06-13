@@ -31,17 +31,20 @@ class SearchRecipesByIngredients
       results_array = JSON.parse(response.read_body)
 
       recipe_array = (results_array.map do |result_hash|
-                      Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
-                      
-                      end)
-
+        Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
+      end)
       return recipe_array
     # end
   end
 
   def create_recipe(result_hash)
-    Recipe.create(title: result_hash["title"], image_url: result_hash["image"], cuisine: result_hash["cuisines.first"],
-                  method: result_hash["instructions"],
+    method = "No instructions provided!" if result_hash["instructions"].nil?
+    cuisine = result_hash["cuisines"].empty? ? "None" : result_hash["cuisines"].first
+    Recipe.create(title: result_hash["title"],
+                  summary: result_hash["summary"],
+                  image_url: result_hash["image"],
+                  cuisine: cuisine,
+                  method: (result_hash["instructions"] || method),
                   servings: result_hash["servings"],
                   cook_time: result_hash["readyInMinutes"],
                   spoonacular_id: result_hash["id"]
