@@ -13,10 +13,8 @@ class SearchRecipesByIngredients
     https.use_ssl = true
     request = Net::HTTP::Get.new(url)
     response = https.request(request)
-    results_array = JSON.parse(response.read_body)
-    # if results_array[0].key?("status")
-    #   return false
-    # else
+    if response.code.include?'200'
+      results_array = JSON.parse(response.read_body)
       id_array = (results_array.map do |results_hash|
                   results_hash["id"]
                   end)
@@ -34,7 +32,9 @@ class SearchRecipesByIngredients
         Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
       end)
       return recipe_array
-    # end
+    else
+      return false
+    end
   end
 
   def create_recipe(result_hash)
