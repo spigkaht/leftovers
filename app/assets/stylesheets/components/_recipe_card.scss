@@ -39,8 +39,9 @@
 }
 
 .recipes-index-card-image {
+  flex-shrink: 0;
   height: 100%;
-  width: 40%;
+  width: 25%;
   padding: 15px;
 
   img {
@@ -49,6 +50,12 @@
     object-fit: cover;
     border-radius: 5px;
   }
+}
+
+.recipes-index-card-text {
+  overflow: hidden;
+  height: 65%;
+  margin-bottom: 0;
 }
 
 .recipes-index-card-heart {
