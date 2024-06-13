@@ -1,19 +1,17 @@
 <div class="recipes-index-card">
   <div class="recipes-index-card-content">
-    <h2 class="recipes-index-card-title">
-      <%= recipe.title %>
-    </h2>
+    <%= link_to recipe.title, recipe_path(recipe) %>
     <p class="recipes-index-card-text">
-      recipe.description
+      <%= sanitize recipe.summary %>
     </p>
     <div class="recipes-index-card-info">
-      <p class="recipes-index-card-servings">6 servings</p>
+      <p class="recipes-index-card-servings"><%= recipe.servings %> servings</p>
       <i class="fa-solid fa-circle recipes-index-card-heart-circle"></i>
-      <p class="recipes-index-card-time">15 mins</p>
+      <p class="recipes-index-card-time"><%= recipe.cook_time %> mins</p>
       <i class="fa-regular fa-heart recipes-index-card-heart"></i>
     </div>
   </div>
   <div class="recipes-index-card-image">
-    <%= image_tag "pizza.jpg" %>
+    <%= image_tag recipe.image_url %>
   </div>
 </div>

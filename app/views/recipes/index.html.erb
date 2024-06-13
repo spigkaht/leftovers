@@ -4,7 +4,7 @@
     <% if @recipes == false %>
       <p>You got 99 problems but a recipe card ain't one</p>
     <% else %>
-      <%= @recipes.each do |recipe| %>
+      <% @recipes.each do |recipe| %>
         <%= render "shared/card", :recipe => recipe %>
       <% end %>
     <% end %>
