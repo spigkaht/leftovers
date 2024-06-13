@@ -34,7 +34,6 @@ class SearchRecipesByIngredients
                       Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
                       
                       end)
-
       return recipe_array
     # end
   end

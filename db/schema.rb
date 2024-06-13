@@ -1,5 +1,5 @@
 # This file is auto-generated from the current state of the database. Instead
-# of editing this file, please the migrations feature of Active Record to
+# of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
 # This file is the source Rails uses to define your schema when running `bin/rails
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_10_044419) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_023643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,12 +42,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_10_044419) do
     t.string "title"
     t.string "image_url"
     t.string "cuisine"
-    t.string "method"
+    t.text "method"
     t.integer "servings"
     t.integer "cook_time"
     t.integer "spoonacular_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "summary"
   end
 
   create_table "user_ingredients", force: :cascade do |t|
