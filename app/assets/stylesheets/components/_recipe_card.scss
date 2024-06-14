@@ -2,7 +2,7 @@
   background-color: $my-bg-colour;
   height: 200px;
   width: 100%;
-  border: 3px solid black;
+  box-shadow: 2px 2px 2px lightgrey;
   border-radius: 5px;
   margin-bottom: 2rem;
   display: flex;
@@ -21,6 +21,7 @@
   font-family: $my-font-other;
   font-weight: 800;
   font-size: 20px;
+  text-decoration: none;
 }
 
 .recipes-index-card-info {
