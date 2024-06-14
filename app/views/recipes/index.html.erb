@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 <div class="recipes-index-content">
   <div class="recipes-index-card-container">
-    <% if @recipes == false %>
+    <% if @recipes.empty? %>
       <p>You got 99 problems but a recipe card ain't one</p>
     <% else %>
       <% @recipes.each do |recipe| %>
