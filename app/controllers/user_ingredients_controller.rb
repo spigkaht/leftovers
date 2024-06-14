@@ -17,7 +17,7 @@ class UserIngredientsController < ApplicationController
   end
 
   def destroy
-    @user_ingredient = UserIngredient.find(params[:user_ingredient_id])
+    @user_ingredient = UserIngredient.find(params[:id])
     @user_ingredient.destroy
   end
 
