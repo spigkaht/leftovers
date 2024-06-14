@@ -11,9 +11,7 @@
       <p class="recipes-index-card-time"><%= recipe.cook_time %> mins</p>
 
       <i data-action="click->create-favourite#createFavourite" class="fa-regular fa-heart recipes-index-card-heart"></i>
-      <%# <%= link_to "Add to Favourites", new_recipe_favourite_path(recipe), method: :post %> %>
-
-      <i data-action="click->create-favourite#createFavourite" class="fa-regular fa-heart recipes-index-card-heart" {value = "recipe_id}></i>
+      <%# <%= link_to "Add to Favourites", new_recipe_favourite_path(recipe), method: :post %> 
 
     </div>
   </div>
