@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :user_ingredients, only: [:new, :create, :edit, :update, :destroy]
   resources :recipes, only: [:index, :show] do
-    resources :favourites, only: [:index, :new, :create]
+    resources :favourites, only: [:index, :create]
     collection do
       get :favourites
-      
+
     end
   end
   resources :favourites, only: [:destroy]
