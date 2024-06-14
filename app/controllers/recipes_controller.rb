@@ -9,6 +9,6 @@ class RecipesController < ApplicationController
   end
 
   def favourites
-    @favourites = Favourite.all
+    @favourites = Favourite.where(user_id: current_user)
   end
 end
