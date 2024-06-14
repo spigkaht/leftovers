@@ -10,4 +10,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def find_favourite_for_recipe(recipe)
+      Favourite.find_by(
+        recipe: recipe,
+        user: self
+      )
+  end
 end
