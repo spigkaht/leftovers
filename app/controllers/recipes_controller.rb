@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
   end
 
   def retrieve_recipes_from_session
-    recipe_id_array = JSON.parse(session[RECIPE_ARRAY_ID]) || []
-    Recipe.where(id: recipe_id_array)
+    json_array = session[RECIPE_ARRAY_ID] || '[]'
+    Recipe.where(id: JSON.parse(json_array))
   end
 end
