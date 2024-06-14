@@ -22,6 +22,18 @@
   margin-bottom: 40px;
 }
 
+.recipe-info-title {
+  height: 30%;
+  flex-grow: 0;
+  overflow: hidden;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: $my-blue;
+  }
+}
+
 .recipe-info {
   box-shadow: 2px 2px 2px lightgrey;
   border-radius: 5px;
@@ -30,7 +42,10 @@
 }
 
 .recipe-info-details {
+  height: 30%;
   margin: 20px;
+  flex-grow: 0;
+  color: $my-blue;
 
   p {
     font-size: 20px;
@@ -48,7 +63,13 @@
   box-shadow: 0px 0px 4px 2px lightgrey;
   border-radius: 5px;
   padding: 10px;
-  width: 25%;
+  min-width: 25%;
+  flex-grow: 1;
+
+  h3 {
+    font-weight: 700;
+    padding-left: 1.5rem;
+  }
 }
 
 .recipe-instructions {
@@ -57,4 +78,20 @@
   border-radius: 5px;
   padding: 10px;
   flex-grow: 1;
+
+  h3 {
+    font-weight: 700;
+    padding-left: 1.5rem;
+  }
+}
+
+.recipe-card-heart {
+  margin-top: auto;
+  margin-left: auto;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+
+.recipe-card-heart i {
+  font-size: 36px;
 }

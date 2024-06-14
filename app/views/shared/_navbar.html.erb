@@ -6,7 +6,7 @@
           <%= f.input :ingredient, label:false, placeholder: "Enter ingredient" %>
           <div class="recipe-buttons d-flex">
             <%= f.button :submit, "Add Ingredient", class: "ingredient-button" %>
-            <button>Recipe Book</button>
+            <%= link_to "Favourites", favourites_recipes_path, class: "ingredient-button" %>
           </div>
         <% end %>
     </div>
