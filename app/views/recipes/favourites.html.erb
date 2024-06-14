@@ -2,10 +2,9 @@
 
 <h1>Recipe Book</h1>
 <div class="recipe-favourites-container">
-<% @favourites.each do |favourite| %>
-  <div class="recipe-favourites-card">
-<%= render "shared/card", :recipe => favourite.recipe %>
-      </div>
+  <% @favourites.each do |favourite| %>
+    <div class="recipe-favourites-card">
+      <%= render "shared/card", :recipe => favourite.recipe %>
     </div>
-<% end %>
+  <% end %>
 </div>

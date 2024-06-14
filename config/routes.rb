@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :user_ingredients, only: [:new, :create, :edit, :update, :destroy]
   resources :recipes, only: [:index, :show] do
-    resources :favourites, only: [:index, :new, :create]
+    resources :favourites, only: [:index, :create]
     collection do
       post :update_search_results
       get :favourites
