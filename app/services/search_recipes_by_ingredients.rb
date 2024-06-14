@@ -48,13 +48,7 @@ class SearchRecipesByIngredients
                   servings: result_hash["servings"],
                   cook_time: result_hash["readyInMinutes"],
                   spoonacular_id: result_hash["id"]
-                  )
-    create_recipe_ingredients(result_hash["extendedIngredients"], recipe)
-  end
-
-  def create_recipe_ingredients(result_ingredients, new_recipe)
-    # raise
-    # result_ingredients.map { |ingredient| }
+                )
   end
 
   def format_ingredients
