@@ -9,12 +9,12 @@
       <p class="recipes-index-card-servings"><%= recipe.servings %> servings</p>
       <i class="fa-solid fa-circle recipes-index-card-heart-circle"></i>
       <p class="recipes-index-card-time"><%= recipe.cook_time %> mins</p>
+
+      <i data-action="click->create-favourite#createFavourite" class="fa-regular fa-heart recipes-index-card-heart"></i>
+      <%# <%= link_to "Add to Favourites", new_recipe_favourite_path(recipe), method: :post %> %>
+
       <i data-action="click->create-favourite#createFavourite" class="fa-regular fa-heart recipes-index-card-heart" {value = "recipe_id}></i>
 
-
-
-      <button> <%= link_to "Add to Favourites", new_recipe_favourite_path(recipe)%>
-      </button>
     </div>
   </div>
   <div class="recipes-index-card-image">
