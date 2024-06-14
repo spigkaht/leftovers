@@ -8,7 +8,7 @@
       <p class="recipes-index-card-servings"><%= recipe.servings %> servings</p>
       <i class="fa-solid fa-circle recipes-index-card-heart-circle"></i>
       <p class="recipes-index-card-time"><%= recipe.cook_time %> mins</p>
-      <%= turbo_frame_tag dom_id(recipe, :favourite_btn) do %>
+      <%= turbo_frame_tag dom_id(recipe, :favourite_btn), class: "recipes-index-card-heart" do %>
         <% favourite_for_recipe = current_user.find_favourite_for_recipe(recipe) %>
         <% if favourite_for_recipe.nil? %>
           <%= link_to recipe_favourites_path(recipe), data: { turbo_method: :post } do %>

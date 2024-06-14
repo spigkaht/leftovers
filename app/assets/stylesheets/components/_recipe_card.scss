@@ -61,7 +61,10 @@
 
 .recipes-index-card-heart {
   margin-left: auto;
-  font-size: 24px;
+
+  i {
+    font-size: 24px;
+  }
 }
 
 .recipes-index-card-heart-circle {
