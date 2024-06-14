@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show] do
     resources :favourites, only: [:index, :new, :create]
     collection do
+      post :update_search_results
       get :favourites
-      
     end
   end
   resources :favourites, only: [:destroy]

@@ -10,6 +10,7 @@
           </div>
         <% end %>
     </div>
+
   <div class="fridge-card-container d-flex flex-column">
     <div class="fridge-card d-flex flex-column">
       <h3>YOUR INGREDIENTS</h3>
@@ -23,6 +24,9 @@
         <% end %>
       </ul>
     </div>
-    <button id="fridgeBtn" class="fridge-card-button">Search Button</button>
+    <div class="fridge-search-button">
+      <%= button_to "Search Recipes", update_search_results_recipes_path, data: { turbo_method: :post } %>
+    </div>
   </div>
+
   </div>
