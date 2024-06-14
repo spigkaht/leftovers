@@ -27,7 +27,6 @@ class SearchRecipesByIngredients
       request = Net::HTTP::Get.new(url)
       response = https.request(request)
       results_array = JSON.parse(response.read_body)
-
       recipe_array = (results_array.map do |result_hash|
         Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
       end)
@@ -48,7 +47,16 @@ class SearchRecipesByIngredients
                   servings: result_hash["servings"],
                   cook_time: result_hash["readyInMinutes"],
                   spoonacular_id: result_hash["id"]
-                )
+                  )
+    create_recipe_ingredients(result_hash["extendedIngredients"], recipe)
+    recipe
+  end
+
+  def create_recipe_ingredients(result_ingredients, new_recipe)
+    result_ingredients.map do |ingredient|
+      new_ingredient = Ingredient.find_or_create_by(name: ingredient["name"])
+      RecipeIngredient.find_or_create_by(recipe: new_recipe, ingredient: new_ingredient)
+    end
   end
 
   def format_ingredients
