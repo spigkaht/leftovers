@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
   private
 
   def save_recipe_ids_to_session(recipes)
-    json_str = recipes.map { |recipe| recipe.id }.to_a.to_json
+    json_str = recipes.map(&:id).to_a.to_json
     session[RECIPE_ARRAY_ID] = json_str
   end
 
