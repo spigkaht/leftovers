@@ -14,10 +14,15 @@
   <div class="fridge-card-container d-flex flex-column">
     <div class="fridge-card d-flex flex-column">
       <h3>YOUR FRIDGE</h3>
-      <ul id="ingredientsList">
-        <% if current_user.ingredients.any? %>
-          <% current_user.ingredients.each do |ingredient| %>
-            <li class="fridge-ingredient"><%= ingredient.name %></li>
+      <ul id="ingredientsList" class="w-50">
+        <% if current_user.user_ingredients.any? %>
+          <% current_user.user_ingredients.each do |user_ingredient| %>
+          <div class="d-flex justify-content-between">
+          <li class="fridge-ingredient"><%= user_ingredient.ingredient.name %></li>
+          <%= link_to "/user_ingredients/#{user_ingredient.id}", data: {turbo_method: :delete} do %>
+          <i class="fa-solid fa-x"></i>
+          <% end %>
+          </div>
           <% end %>
         <% else %>
           <p>IS EMPTY YAR</p>

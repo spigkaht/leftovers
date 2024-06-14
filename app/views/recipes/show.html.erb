@@ -40,7 +40,7 @@
     </div>
     <div class="recipe-instructions d-flex flex-column">
       <h3>Instructions</h3>
-        <p><%= @recipe.method %></p>
+        <p><%= sanitize @recipe.method %></p>
     </div>
   </div>
 </div>
