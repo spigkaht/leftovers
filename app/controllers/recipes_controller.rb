@@ -11,11 +11,10 @@ class RecipesController < ApplicationController
   def index
     @user_ingredient = UserIngredient.new
     @recipes = retrieve_recipes_from_session
+    @recipe_cuisines = @recipes.pluck(:cuisine).uniq
     @params_ingredients = []
-    if params[:ingredients].present?
-      @ingredients = Ingredient.where(id: params[:ingredients])
-      @recipes = @recipes.joins(:ingredients).where(ingredients: { id: @ingredients })
-    end
+    @recipes = @recipes.by_cuisine(params[:cuisine]) if params[:cuisine].present?
+    @recipes = @recipes.by_ingredient(params[:ingredients]) if params[:ingredients].present?
   end
 
   def show

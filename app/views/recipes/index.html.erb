@@ -9,15 +9,28 @@
       <% end %>
     <% end %>
   </div>
-  <div class="recipes-index-filters">
-    <% @params_ingredients = [] %>
-    <% current_user.ingredients.each do |ingredient|%>
-      <% if params[:ingredients]&.include?(ingredient.id.to_s) %>
+   <div class="recipes-index-filters">
+    <% selected_ingredients = params[:ingredients] || [] %>
+    <% selected_ingredients = selected_ingredients.map(&:to_i) %> <!-- Ensure all IDs are integers -->
+    <% current_user.ingredients.each do |ingredient| %>
+      <% if selected_ingredients.include?(ingredient.id) %>
         <%# ACTIVE %>
-        <%= link_to ingredient.name, recipes_path(ingredients: (@params_ingredients + [ingredient.id])), style: "background: blue; color: white;" %>
+        <%= link_to ingredient.name, recipes_path(ingredients: selected_ingredients - [ingredient.id]), style: "background: blue; color: white;" %>
       <% else %>
         <%# NON ACTIVE %>
-        <%= link_to ingredient.name, recipes_path(ingredients: (@params_ingredients + [ingredient.id])) %>
+        <%= link_to ingredient.name, recipes_path(ingredients: selected_ingredients + [ingredient.id]) %>
+      <% end %>
+    <% end %>
+    <% selected_cuisine = params[:cuisine] || "" %>
+    <% @recipe_cuisines.each do |cuisine| %>
+      <% if cuisine != "None" %>
+        <% if cuisine == selected_cuisine %>
+          <%# ACTIVE %>
+          <%= link_to cuisine, recipes_path(cuisine: cuisine), style: "background: blue; color: white;" %>
+      <% else %>
+          <%# NON ACTIVE %>
+          <%= link_to cuisine, recipes_path(cuisine: cuisine) %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
