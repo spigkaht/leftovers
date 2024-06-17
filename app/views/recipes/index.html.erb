@@ -10,5 +10,15 @@
     <% end %>
   </div>
   <div class="recipes-index-filters">
+    <% @params_ingredients = [] %>
+    <% current_user.ingredients.each do |ingredient|%>
+      <% if params[:ingredients]&.include?(ingredient.id.to_s) %>
+        <%# ACTIVE %>
+        <%= link_to ingredient.name, recipes_path(ingredients: (@params_ingredients + [ingredient.id])), style: "background: blue; color: white;" %>
+      <% else %>
+        <%# NON ACTIVE %>
+        <%= link_to ingredient.name, recipes_path(ingredients: (@params_ingredients.push([ingredient.id]))) %>
+      <% end %>
+    <% end %>
   </div>
 </div>

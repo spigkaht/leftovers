@@ -7,7 +7,7 @@ class SearchRecipesByIngredients
   end
 
   def call
-    url = URI("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{format_ingredients}&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
+    url = URI("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{format_ingredients}&fillIngredients=true&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
 
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
@@ -30,7 +30,7 @@ class SearchRecipesByIngredients
       recipe_array = (results_array.map do |result_hash|
         Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
       end)
-      return recipe_array
+      Recipe.where(spoonacular_id: recipe_array.map(&:spoonacular_id))
     else
       return false
     end
