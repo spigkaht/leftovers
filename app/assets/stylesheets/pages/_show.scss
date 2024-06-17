@@ -35,7 +35,7 @@
 }
 
 .recipe-info {
-  background-color: $my-bg-colour;
+  background-color: #f4b464;
   border-radius: 5px;
   padding: 10px 10px 10px 20px;
   flex-grow: 1;
@@ -60,9 +60,11 @@
 }
 
 .recipe-ingredient-card {
+  height: fit-content;
   box-shadow: 0px 0px 4px 2px lightgrey;
   border-radius: 5px;
   padding: 10px;
+  margin-right: 8px;
   min-width: 25%;
   flex-grow: 1;
 
@@ -71,6 +73,11 @@
     padding-left: 1.5rem;
     font-family: "Inria Serif", serif;
   }
+}
+
+.recipe-ingredient-card li {
+  list-style: square;
+  font-weight: lighter;
 }
 
 .recipe-instructions {
@@ -94,18 +101,32 @@
 
 .recipe-card-heart i {
   font-size: 36px;
+  color: #FFF3E0;
 }
 
 .step-icon {
   position: relative;
   margin-right: 2px;
   margin-bottom: 5px;
-  p {
-    position: absolute;
-    left: 8px;
-    top: 0px;
+  width: 30px;
+  height: 30px;
+  background: #e67e22;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  margin-right: 10px;
 }
-  }
+
+#numbers {
+  color: white;
+}
+
+#Ingredients {
+  padding-bottom: 5px;
+  border-bottom: 1px solid lightgray;
+}
 
 .instruction-card {
   margin-bottom: 8px;
