@@ -40,14 +40,15 @@ class SearchRecipesByIngredients
     method = "No instructions provided!" if result_hash["analyzedInstructions"].nil?
     cuisine = result_hash["cuisines"].empty? ? "None" : result_hash["cuisines"].first
     recipe = Recipe.create(title: result_hash["title"],
-                  summary: result_hash["summary"],
-                  image_url: result_hash["image"],
-                  cuisine: cuisine,
-                  method: (result_hash["analyzedInstructions"] || method),
-                  servings: result_hash["servings"],
-                  cook_time: result_hash["readyInMinutes"],
-                  spoonacular_id: result_hash["id"]
-                  )
+      summary: result_hash["summary"],
+      image_url: result_hash["image"],
+      cuisine: cuisine,
+      method: (result_hash["analyzedInstructions"][0]["steps"] || method),
+      servings: result_hash["servings"],
+      cook_time: result_hash["readyInMinutes"],
+      spoonacular_id: result_hash["id"]
+      )
+    # raise
     create_recipe_ingredients(result_hash["extendedIngredients"], recipe)
     recipe
   end
