@@ -8,9 +8,9 @@
         <h2><%=@recipe.title%></h2>
       </div>
       <div class="recipe-info-details d-flex">
-        <i class="fa-solid fa-earth-americas"> : </i> <%= @recipe.cuisine %></p>
-        <i class="fa-solid fa-person"> : </i> <%= @recipe.servings %></p>
-        <i class="fa-regular fa-clock"> : </i> <%= @recipe.cook_time %></p>
+        <i class="fa-solid fa-earth-americas" style="color: #d39737;"> : </i> <%= @recipe.cuisine %></p>
+        <i class="fa-solid fa-person" style="color: #d39737;"> : </i> <%= @recipe.servings %></p>
+        <i class="fa-regular fa-clock" style="color: #d39737;"> : </i>  <%= @recipe.cook_time %> Minutes</p>
       </div>
       <%= turbo_frame_tag dom_id(@recipe, :favourite_btn), class: "recipe-card-heart" do %>
         <% favourite_for_recipe = current_user.find_favourite_for_recipe(@recipe) %>
@@ -40,7 +40,15 @@
     </div>
     <div class="recipe-instructions d-flex flex-column">
       <h3>Instructions</h3>
-        <i class="fa-regular fa-circle fa-xl" style="color: #d39737;"></i><%= sanitize @recipe.method %>
+        <% @recipe.method.each_with_index do |step, index| %>
+        <div class="instruction-card d-flex">
+        <div class="step-icon">
+        <i class="fa-regular fa-circle fa-xl" style="color: #d39737;">  </i>
+        <p> <%= index + 1 %></p>
+        </div>
+        <%= step["step"]%>
+        </div>
+        <% end %>
     </div>
   </div>
 </div>
