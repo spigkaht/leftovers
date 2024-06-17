@@ -7,7 +7,7 @@ class SearchRecipesByIngredients
   end
 
   def call
-    url = URI("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{format_ingredients}&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
+    url = URI("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{format_ingredients}&fillIngredients=true&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
 
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
@@ -30,24 +30,25 @@ class SearchRecipesByIngredients
       recipe_array = (results_array.map do |result_hash|
         Recipe.find_by(spoonacular_id: result_hash["id"]) || create_recipe(result_hash)
       end)
-      return recipe_array
+      Recipe.where(spoonacular_id: recipe_array.map(&:spoonacular_id))
     else
       return false
     end
   end
 
   def create_recipe(result_hash)
-    method = "No instructions provided!" if result_hash["instructions"].nil?
+    method = "No instructions provided!" if result_hash["analyzedInstructions"].nil?
     cuisine = result_hash["cuisines"].empty? ? "None" : result_hash["cuisines"].first
     recipe = Recipe.create(title: result_hash["title"],
-                  summary: result_hash["summary"],
-                  image_url: result_hash["image"],
-                  cuisine: cuisine,
-                  method: (result_hash["instructions"] || method),
-                  servings: result_hash["servings"],
-                  cook_time: result_hash["readyInMinutes"],
-                  spoonacular_id: result_hash["id"]
-                  )
+      summary: result_hash["summary"],
+      image_url: result_hash["image"],
+      cuisine: cuisine,
+      method: (result_hash["analyzedInstructions"][0]["steps"] || method),
+      servings: result_hash["servings"],
+      cook_time: result_hash["readyInMinutes"],
+      spoonacular_id: result_hash["id"]
+      )
+    # raise
     create_recipe_ingredients(result_hash["extendedIngredients"], recipe)
     recipe
   end

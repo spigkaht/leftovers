@@ -1,39 +1,35 @@
-
-  <div class="recipe-header-card d-flex justify-content-between">
-    <div class="recipe-title d-flex flex-column justify-content-between">
-      <h1>LEFTOVERS</h1>
-        <%= simple_form_for @user_ingredient do |f| %>
-          <%= f.input :ingredient, label:false, placeholder: "Enter ingredient" %>
-          <div class="recipe-buttons d-flex">
-            <%= f.button :submit, "Add Ingredient", class: "ingredient-button" %>
-            <%= link_to "Favourites", favourites_recipes_path, class: "ingredient-button" %>
-          </div>
-        <% end %>
+<div>
+  <div class="container py-4 d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <%# Logo %>
+      <p class="m-0 me-4">LeftOvers...</p>
+      <%# Links %>
+      <div class="d-flex align-items-center">
+        <%= link_to "Home", recipes_path, class: "me-2" %>
+        <%= link_to("Favourites", favourites_recipes_path, class: "me-2") if user_signed_in? %>
+      </div>
     </div>
-
-  <div class="fridge-card-container d-flex flex-column">
-    <div class="fridge-card d-flex flex-column">
-      <h3>YOUR FRIDGE</h3>
-      <ul id="ingredientsList" class="w-50">
-        <% if current_user.user_ingredients.any? %>
-          <% current_user.user_ingredients.each do |user_ingredient| %>
-          <div class="d-flex justify-content-between">
-          <li class="fridge-ingredient"><%= user_ingredient.ingredient.name %></li>
-          <%= link_to "/user_ingredients/#{user_ingredient.id}", data: {turbo_method: :delete} do %>
-          <i class="fa-solid fa-x"></i>
-          <% end %>
-          </div>
-          <% end %>
-        <% else %>
-          <p>IS EMPTY YAR</p>
-        <% end %>
-      </ul>
+    <div>
+      <% if user_signed_in? %>
+        <%# Avatar %>
+        <div class="btn-group">
+          <%# <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Right-aligned menu
+          </button> %>
+          <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Avatar", class: 'rounded-circle', style: "height: 40px; width: 40px;", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } %>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Menu item</a></li>
+            <li><a class="dropdown-item" href="#">Menu item</a></li>
+            <li>
+              <%=link_to "Log Out", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete, confirm: 'Are you really not hungry?' }%>
+            </li>
+          </ul>
+        </div>
+      <% else %>
+        <%# Sign in links %>
+        <%= link_to "Login", new_user_session_path %>
+        <%= link_to "Signup", new_user_registration_path %>
+      <% end %>
     </div>
-    <div class="fridge-search-button">
-      <%= button_to "Search Recipes", update_search_results_recipes_path, data: { turbo_method: :post } %>
-    </div>
-        <%=link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete, confirm: 'Are you really not hungry?' }%>
-
   </div>
-
-  </div>
+</div>
