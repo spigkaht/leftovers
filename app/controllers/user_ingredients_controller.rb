@@ -18,7 +18,11 @@ class UserIngredientsController < ApplicationController
 
   def destroy
     @user_ingredient = UserIngredient.find(params[:id])
-    @user_ingredient.destroy
+    if  @user_ingredient.destroy
+    redirect_to recipes_path
+    else
+    render :index, status: :unprocessable_entity
+    end
   end
 
   private

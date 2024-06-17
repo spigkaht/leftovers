@@ -2,7 +2,7 @@
   background-color: $my-bg-colour;
   height: 200px;
   width: 100%;
-  box-shadow: 2px 2px 2px lightgrey;
+  box-shadow: 0px 0px 4px 2px lightgrey;
   border-radius: 5px;
   margin-bottom: 2rem;
   display: flex;
@@ -64,6 +64,7 @@
 
   i {
     font-size: 24px;
+    color: $my-orange;
   }
 }
 
