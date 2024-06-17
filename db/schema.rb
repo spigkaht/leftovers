@@ -42,13 +42,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_011046) do
     t.string "title"
     t.string "image_url"
     t.string "cuisine"
+    t.text "method"
     t.integer "servings"
     t.integer "cook_time"
     t.integer "spoonacular_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "summary"
-    t.jsonb "method", default: []
     t.integer "included_ingredients"
     t.integer "excluded_ingredients"
   end
