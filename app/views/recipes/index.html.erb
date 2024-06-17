@@ -17,7 +17,7 @@
         <%= link_to ingredient.name, recipes_path(ingredients: (@params_ingredients + [ingredient.id])), style: "background: blue; color: white;" %>
       <% else %>
         <%# NON ACTIVE %>
-        <%= link_to ingredient.name, recipes_path(ingredients: (@params_ingredients.push([ingredient.id]))) %>
+        <%= link_to ingredient.name, recipes_path(ingredients: (@params_ingredients + [ingredient.id])) %>
       <% end %>
     <% end %>
   </div>
