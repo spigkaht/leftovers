@@ -1,0 +1,50 @@
+.container {
+  // mwidth: 500px;
+  // display: inline-block;
+  justify-content: center;
+}
+
+img {
+  width: fit-content;
+  height: auto;
+  margin-top: 100px;
+  margin-bottom: auto;
+}
+
+.form {
+  text-align: center;
+}
+
+body {
+  background-color: #d39738;
+}
+
+h1.form {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: "Inria Serif", serif;
+  font-style: normal;
+}
+
+.registration-inputs {
+  input {
+    border: 1px solid black;
+    font-size: large;
+  }
+}
+
+.form-actions {
+  align-items: center;
+  // justify-content: center;
+}
+
+.log-in-container {
+  width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-btn {
+  align-items: center;
+
+}

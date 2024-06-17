@@ -10,13 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-  <% unless current_page?(root_path)%>
-    <div class="leftovers-container">
-      <%end%>
+    <% unless current_page?(root_path) || devise_controller? %>
+      <div class="leftovers-container">
+    <%end%>
       <%= render "shared/flashes" %>
       <%= yield %>
-      <% unless current_page?(root_path)%>
-    </div>
+    <% unless current_page?(root_path) || devise_controller? %>
+      </div>
     <%end%>
   </body>
 </html>
