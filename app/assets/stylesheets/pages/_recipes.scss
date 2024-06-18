@@ -26,9 +26,8 @@
 
 .recipes-index-filters {
   background-color: $my-bg-colour;
-  height: 550px;
   box-shadow: 2px 2px 2px lightgrey;
   border-radius: 5px;
-  flex-grow: 1;
+  height: fit-content;
   margin-left: 30px;
 }

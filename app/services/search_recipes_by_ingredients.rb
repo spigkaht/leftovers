@@ -7,7 +7,7 @@ class SearchRecipesByIngredients
   end
 
   def call
-    url = URI("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{format_ingredients}&fillIngredients=true&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
+    url = URI("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{format_ingredients}&fillIngredients=true&number=25&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
 
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
@@ -39,16 +39,16 @@ class SearchRecipesByIngredients
   def create_recipe(result_hash)
     method = result_hash["analyzedInstructions"] = [] ? ["No instructions provided!"] : result_hash["analyzedInstructions"][0]["steps"]
     cuisine = result_hash["cuisines"].empty? ? "None" : result_hash["cuisines"].first
+    image = result_hash["image"] != nil ? result_hash["image"] : "https://res.cloudinary.com/dp0apr6y4/image/upload/v1718670469/no-image_wliawa.webp"
     recipe = Recipe.create(title: result_hash["title"],
       summary: result_hash["summary"],
-      image_url: result_hash["image"],
+      image_url: image,
       cuisine: cuisine,
       method: method,
       servings: result_hash["servings"],
       cook_time: result_hash["readyInMinutes"],
       spoonacular_id: result_hash["id"]
       )
-    # raise
     create_recipe_ingredients(result_hash["extendedIngredients"], recipe)
     recipe
   end
