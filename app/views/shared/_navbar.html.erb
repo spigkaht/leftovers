@@ -1,12 +1,12 @@
 
-  <div class="container py-4 d-flex align-items-center justify-content-between sticky-top">
+  <div class="py-4 px-4 d-flex align-items-center justify-content-between sticky-top w-100vw  new-navbar">
     <div class="d-flex align-items-center">
       <%# Logo %>
-      <p class="m-0 me-4">Lef</p>
+      <%=image_tag("Leftovers-logo.png")%>
       <%# Links %>
       <div class="d-flex align-items-center">
-        <%= link_to "Home", recipes_path, class: "me-2" %>
-        <%= link_to("Favourites", favourites_recipes_path, class: "me-2") if user_signed_in? %>
+        <%= link_to "Home", recipes_path, class: "btn btn-outline-light" %>
+        <%= link_to("Favourites", favourites_recipes_path, class: "btn btn-outline-light") if user_signed_in? %>
       </div>
     </div>
     <div>
@@ -25,6 +25,7 @@
             </li>
           </ul>
         </div>
+    </div>
       <% else %>
         <%# Sign in links %>
         <%= link_to "Login", new_user_session_path %>
