@@ -6,6 +6,7 @@ grid-template-rows: repeat(4, 1fr);
 grid-column-gap: 8px;
 grid-row-gap: 8px;
 }
+
 .div1 { grid-area: 1 / 1 / 2 / 2; }
 .div2 { grid-area: 1 / 2 / 2 / 3; }
 
@@ -14,3 +15,4 @@ grid-row-gap: 8px;
     border: 3px solid rgba(0, 0, 0, 0.797);
     border-radius: 7px;
   }
+
