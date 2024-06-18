@@ -1,12 +1,12 @@
 <div class="log-in-container">
   <div class="row">
 
-    <div class="sm-col-12 col-8">
+    <div class="sm-col-12 col-8 sign-up">
       <%= image_tag "Best-Food-Photos-2017.jpg", class: "w-100" %>
     </div>
 
     <div class="sm-col-12 col-4">
-      <h1 class="form">Join us</h1>
+      <h1 class="form">Join us!</h1>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
