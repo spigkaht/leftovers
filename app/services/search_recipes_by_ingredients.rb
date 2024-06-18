@@ -37,7 +37,7 @@ class SearchRecipesByIngredients
   end
 
   def create_recipe(result_hash)
-    method = result_hash["analyzedInstructions"] = [] ? ["No instructions provided!"] : result_hash["analyzedInstructions"][0]["steps"]
+    method = result_hash["analyzedInstructions"] == [] ? ["No instructions provided!"] : result_hash["analyzedInstructions"][0]["steps"]
     cuisine = result_hash["cuisines"].empty? ? "None" : result_hash["cuisines"].first
     image = result_hash["image"] != nil ? result_hash["image"] : "https://res.cloudinary.com/dp0apr6y4/image/upload/v1718670469/no-image_wliawa.webp"
     recipe = Recipe.create(title: result_hash["title"],
