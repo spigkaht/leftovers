@@ -4,9 +4,9 @@
       <h1>LEFTOVERS</h1>
         <%= simple_form_for @user_ingredient do |f| %>
           <%= f.input :ingredient, label:false, placeholder: "Enter ingredient" %>
-          <div class="recipe-buttons d-flex">
-            <%= f.button :submit, "Add Ingredient", class: "ingredient-button" %>
-            <%= link_to "Favourites", favourites_recipes_path, class: "ingredient-button" %>
+          <div class="recipe-buttons d-flex justify-content-between">
+            <%= link_to "Favourites", favourites_recipes_path, class: "btn btn-lg btn-outline-dark" %>
+            <%= f.button :submit, "Add Ingredient", class: "btn btn-lg btn-outline-dark w-50" %>
           </div>
         <% end %>
     </div>
@@ -18,7 +18,7 @@
           <% if current_user.user_ingredients.any? %>
             <% current_user.user_ingredients.each do |user_ingredient| %>
             <div class="d-flex justify-content-between">
-            <li class="fridge-ingredient"><%= user_ingredient.ingredient.name %></li>
+            <li class="fridge-ingredient"><%= user_ingredient.ingredient.name.capitalize %></li>
             <%= link_to "/user_ingredients/#{user_ingredient.id}", data: {turbo_method: :delete} do %>
             <i class="fa-solid fa-x"></i>
             <% end %>
@@ -30,9 +30,9 @@
         </ul>
       </div>
       <div class="fridge-search-button">
-        <%= button_to "Search Recipes", update_search_results_recipes_path, data: { turbo_method: :post } %>
+        <%= button_to "Search Recipes", update_search_results_recipes_path, data: { turbo_method: :post }, class: "btn btn-lg btn-outline-dark w-100" %>
+        <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete, confirm: 'Are you really not hungry?' }, class: "btn btn-lg btn-outline-dark w-100 mt-2" %>
       </div>
-          <%=link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete, confirm: 'Are you really not hungry?' }%>
 
     </div>
 
@@ -49,29 +49,33 @@
       <% end %>
     <% end %>
   </div>
-   <div class="recipes-index-filters">
+   <div class="recipes-index-filters d-flex flex-column align-items-center px-5 py-3">
     <% selected_ingredients = params[:ingredients] || [] %>
     <% selected_ingredients = selected_ingredients.map(&:to_i) %> <!-- Ensure all IDs are integers -->
+    <h2>Filter by Ingredient</h2>
     <% current_user.ingredients.each do |ingredient| %>
       <% if selected_ingredients.include?(ingredient.id) %>
         <%# ACTIVE %>
-        <%= link_to ingredient.name, recipes_path(ingredients: selected_ingredients - [ingredient.id]), style: "background: blue; color: white;" %>
+        <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients - [ingredient.id]), class: "btn btn-lg btn-outline-dark w-75 mt-2", style: "background: blue; color: white;" %>
       <% else %>
         <%# NON ACTIVE %>
-        <%= link_to ingredient.name, recipes_path(ingredients: selected_ingredients + [ingredient.id]) %>
+        <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients + [ingredient.id]), class: "btn btn-lg btn-outline-dark w-75 mt-2" %>
       <% end %>
     <% end %>
     <% selected_cuisine = params[:cuisine] || "" %>
+    <h2 class="mt-3">Filter by Cuisine</h2>
     <% @recipe_cuisines.each do |cuisine| %>
       <% if cuisine != "None" %>
         <% if cuisine == selected_cuisine %>
           <%# ACTIVE %>
-          <%= link_to cuisine, recipes_path(cuisine: cuisine), style: "background: blue; color: white;" %>
+          <%= link_to cuisine, recipes_path(cuisine: cuisine), class: "btn btn-lg btn-outline-dark w-75 mt-2", style: "background: blue; color: white;" %>
       <% else %>
           <%# NON ACTIVE %>
-          <%= link_to cuisine, recipes_path(cuisine: cuisine) %>
+          <%= link_to cuisine, recipes_path(cuisine: cuisine), class: "btn btn-lg btn-outline-dark w-75 mt-2" %>
         <% end %>
       <% end %>
     <% end %>
   </div>
 </div>
+
+<%# btn btn-lg btn-outline-dark w-100 %>
