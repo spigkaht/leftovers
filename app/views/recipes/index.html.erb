@@ -1,7 +1,7 @@
-
 <% if user_signed_in? %>
   <div class="recipe-header-card d-flex justify-content-between">
     <div class="recipe-title d-flex flex-column justify-content-between">
+      <h1>LEFTOVERS</h1>
         <%= simple_form_for @user_ingredient do |f| %>
           <%= f.input :ingredient, label:false, placeholder: "Enter ingredient" %>
           <div class="recipe-buttons d-flex justify-content-between">
