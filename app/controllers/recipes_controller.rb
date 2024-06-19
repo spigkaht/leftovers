@@ -9,16 +9,39 @@ class RecipesController < ApplicationController
   end
 
   def index
+    @id_ingredient_array = []
     @user_ingredient = UserIngredient.new
     @recipes = retrieve_recipes_from_session
     @recipe_cuisines = @recipes.pluck(:cuisine).uniq
-    @params_ingredients = []
-    @recipes = @recipes.by_cuisine(params[:cuisine]) if params[:cuisine].present?
-    @recipes = @recipes.by_ingredient(params[:ingredients]) if params[:ingredients].present?
+
+    if params[:cuisine].present?
+      @recipes = @recipes.by_cuisine(params[:cuisine])
+    end
+
+    if params[:ingredients].present?
+      ingredients = params[:ingredients].is_a?(Array) ? params[:ingredients] : [params[:ingredients]]
+      @recipes = @recipes.by_ingredient(ingredients)
+    end
   end
 
   def show
     @recipe = Recipe.find(params[:id])
+    @recipe_ingredients_array = []
+    @recipe.ingredients.each { |ingredient| @recipe_ingredients_array.push(ingredient) }
+    @user_ingredients_array = []
+    current_user.ingredients.each { |ingredient| @user_ingredients_array.push(ingredient) }
+    client = OpenAI::Client.new
+    chaptgpt_response = client.chat(parameters: {
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: "Please return ONLY a string of ingredient names,
+      separated by commas, showing me what I'm missing from this recipe's list of ingredients:
+      #{@recipe_ingredients_array}. Here are the ingredients I currently have:
+      #{@user_ingredients_array}. If the name of the ingredient in the @recipe_ingredients_array
+      contains the name of the ingredient in the @user_ingredients_array, you can leave this out
+      of the string that you return."}]
+    })
+    @content_full = chaptgpt_response["choices"][0]["message"]
+    @content = chaptgpt_response["choices"][0]["message"]["content"].split(",")
   end
 
   def favourites
