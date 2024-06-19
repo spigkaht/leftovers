@@ -1,3 +1,9 @@
-<div style="background-image: url('<%= image_url %>'); background-size: cover; height: 500px;" class="w-100 d-flex align-items-center justify-content-center text-center">
+<%# <div class="gradient-overlay"> %>
+  <div style=" background: linear-gradient(
+      rgba(0, 0, 0, 0.7),  /* Top color with 50% opacity */
+      rgba(0, 0, 0, 0.1)   /* Bottom color with 50% opacity */
+    ),
+    url('<%= image_url %>');background-size: cover; height: 500px;" class="w-100 d-flex align-items-center justify-content-center text-center">
   <h1 class="recipe-banner-title"><%= title %></h1>
 </div>
+<%# </div> %>

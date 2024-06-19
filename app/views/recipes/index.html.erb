@@ -1,21 +1,15 @@
+
 <% if user_signed_in? %>
-  <div class="search-banner"></div>
-  <div class="container pb-4" style="margin-top: -100px;">
-    <div class="fridge-card-container">
-      <h3>YOUR FRIDGE</h3>
-      <ul id="ingredientsList" class="ingredients-list">
-        <% if current_user.user_ingredients.any? %>
-          <% current_user.user_ingredients.each do |user_ingredient| %>
-            <li class="fridge-ingredient">
-              <%= user_ingredient.ingredient.name.capitalize %>
-              <%= link_to "/user_ingredients/#{user_ingredient.id}", data: {turbo_method: :delete} do %>
-                <i class="fa-regular fa-circle-xmark" style="color: #f33939;"></i>
-              <% end %>
-            </li>
-          <% end %>
-        <% else %>
-          <p>Add your Leftover Ingredients!!! </p>
+  <div class="recipe-header-card d-flex justify-content-between">
+    <div class="recipe-title d-flex flex-column justify-content-between">
+        <%= simple_form_for @user_ingredient do |f| %>
+          <%= f.input :ingredient, label:false, placeholder: "Enter ingredient" %>
+          <div class="recipe-buttons d-flex justify-content-between">
+            <%= link_to "Favourites", favourites_recipes_path, class: "btn btn-lg btn-outline-dark" %>
+            <%= f.button :submit, "Add Ingredient", class: "btn btn-lg btn-outline-dark w-50" %>
+          </div>
         <% end %>
+      
         <!-- Button trigger modal -->
         <div class="add-ingredient-button" data-bs-toggle="modal" data-bs-target="#newIngredient">
           <i class="fa-solid fa-plus"></i>
@@ -47,11 +41,24 @@
   </div>
 <% end %>
 
-<div class="container">
-  <div class="recipes-index-content">
-    <div class="recipes-index-card-container">
-      <% if @recipes.empty? %>
-        <p>You got 99 problems but a recipe card ain't one</p>
+<div class="recipes-index-content">
+  <div class="recipes-index-card-container">
+    <% if @recipes.empty? %>
+      <p>You got 99 problems but a recipe ain't one</p>
+    <% else %>
+      <% @recipes.each do |recipe| %>
+        <%= render "shared/card", :recipe => recipe %>
+      <% end %>
+    <% end %>
+  </div>
+   <div class="recipes-index-filters d-flex flex-column align-items-center px-5 py-3">
+    <% selected_ingredients = params[:ingredients] || [] %>
+    <% selected_ingredients = selected_ingredients.map(&:to_i) %> <!-- Ensure all IDs are integers -->
+    <h2>Filter by Ingredient</h2>
+    <% current_user.ingredients.each do |ingredient| %>
+      <% if selected_ingredients.include?(ingredient.id) %>
+        <%# ACTIVE %>
+        <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients - [ingredient.id]), class: "btn btn-lg btn-outline-dark w-75 mt-2", style: "background: blue; color: white;" %>
       <% else %>
         <% @recipes.each do |recipe| %>
           <%= render "shared/card", :recipe => recipe %>

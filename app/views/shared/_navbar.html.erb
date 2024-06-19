@@ -1,35 +1,36 @@
 
-  <div class="py-4 px-4 d-flex align-items-center justify-content-between sticky-top w-100vw  new-navbar">
-    <div class="d-flex align-items-center">
-      <%# Logo %>
-      <%# <%=image_tag("Leftovers-logo.png")  %>
-      <%# Links %>
+  <div data-action="scroll@window->navbar#onScroll" data-controller="navbar" class="new-navbar">
+    <div class="py-4 px-4 d-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center">
-        <%= link_to "Home", recipes_path, class: "btn btn-outline-light" %>
-        <%= link_to("Favourites", favourites_recipes_path, class: "btn btn-outline-light") if user_signed_in? %>
-      </div>
-    </div>
-    <div>
-      <% if user_signed_in? %>
-        <%# Avatar %>
-        <div class="btn-group">
-          <%# <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Right-aligned menu
-          </button> %>
-          <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Avatar", class: 'rounded-circle', style: "height: 40px; width: 40px;", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } %>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li>
-              <%=link_to "Log Out", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete, confirm: 'Are you really not hungry?' }%>
-            </li>
-          </ul>
+        <%# Logo %>
+        <%=image_tag("new-leftovers.svg", class: "leftovers-logo")%>
+        <%# Links %>
+        <div class="d-flex align-items-center">
+          <%= link_to "Home", recipes_path, class: "me-2 btn btn-outline-light navbar-btn" %>
+          <%= link_to("Favourites", favourites_recipes_path, class: "me-2 btn btn-outline-light navbar-btn") if user_signed_in? %>
         </div>
-    </div>
-      <% else %>
-        <%# Sign in links %>
-        <%= link_to "Login", new_user_session_path %>
-        <%= link_to "Signup", new_user_registration_path %>
-      <% end %>
+      </div>
+      <div>
+        <% if user_signed_in? %>
+          <%# Avatar %>
+          <div class="btn-group">
+            <%# <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Right-aligned menu
+            </button> %>
+            <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Avatar", class: 'rounded-circle', style: "height: 40px; width: 40px;", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } %>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li>
+                <%=link_to "Log Out", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete, confirm: 'Are you really not hungry?' }%>
+              </li>
+            </ul>
+          </div>
+        <% else %>
+          <%# Sign in links %>
+          <%= link_to "Login", new_user_session_path %>
+          <%= link_to "Signup", new_user_registration_path %>
+        <% end %>
+      </div>
     </div>
   </div>
