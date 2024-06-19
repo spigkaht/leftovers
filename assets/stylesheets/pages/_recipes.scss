@@ -1,0 +1,94 @@
+@import "components/recipe_card";
+
+.recipes-index-container {
+  width: 80vw;
+  margin: 2rem auto 0 auto;
+}
+
+.search-banner {
+
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.7),  /* Top color with 50% opacity */
+    rgba(0, 0, 0, 0.1)   /* Bottom color with 50% opacity */
+    ),
+    asset-url("veggies.jpg");
+    background-size: cover;
+    padding: 150px 0;
+  background-repeat: no-repeat;
+}
+
+.temp-navbar {
+  background-color: $my-bg-colour;
+  height: 380px;
+  width: 100%;
+  border: 3px solid black;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+
+.recipes-index-card-container {
+  width: 70%;
+  flex-direction: column;
+}
+
+.recipes-index-content {
+  display: flex;
+}
+
+.recipes-index-filters {
+  background-color: $my-orange;
+  box-shadow: 2px 2px 2px lightgrey;
+  border-radius: 5px;
+  height: fit-content;
+  margin-left: auto;
+}
+
+
+
+.ingredients-list {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-ingredient-button {
+  height: 40px;
+  width: 40px;
+  margin-top: 4px;
+  margin-left: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 2px solid black;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    background: black;
+
+    i {
+      color: white;
+    }
+  }
+}
+
+.fridge-ingredient {
+  background-color: white;
+  width: -moz-min-content;
+  width: min-content;
+  padding: 8px;
+  border-radius: 24px;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.fridge-ingredient {
+  a {
+    margin-left: 6px;
+  }
+}
+
