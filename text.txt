@@ -1,0 +1,5 @@
+client = OpenAI::Client.new
+client.chat(parameters: {
+  model: "gpt-3.5-turbo",
+  messages: [{ role: "user", content: "Tell me why Ruby is an elegant coding language"}]
+})
