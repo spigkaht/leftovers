@@ -72,30 +72,6 @@
 }
 
 .new-navbar {
-  background-color: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  transition: 0.7s;
-  // .navbar-btn {
-  //   color: white;
-  //   border: 1px solid white;
-  // }
-}
-
-.new-navbar.active {
+  height: 100px;
   background-color: #2d2b2b;
-  transition: 0.7s;
-  // DEFINE ANY ELEMENTS THAT CHANGE WITH ACTIVE STATE HERE
-  // .navbar-btn {
-  //   color: white;
-  //   border: 1px solid white;
-  // }
-}
-
-
-.leftovers-logo {
-  height: 50px;
-  margin-right: 40px;
 }

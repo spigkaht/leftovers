@@ -1,0 +1,51 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+@import "pages/recipes";
+
+
+.leftovers-container {
+  width: 80vw;
+  margin: 2rem auto 0 auto;
+}
+
+button {
+  background-color: $my-orange;
+  border: 0px;
+  border-radius: 15px;
+  padding: 14px 20px;
+  width: fit-content;
+}
+
+h1 {
+  font-size: 64px;
+  font-family: "Inria Serif", serif;
+}
+
+h2 {
+  font-size: 32px;
+  font-family: "Inria Serif", serif;
+}
+
+h3 {
+  font-family: "Inria Serif", serif;
+}
+
+a {
+  font-family: "Inria Serif", serif;;
+}
+
+
+body {
+  background-color: rgba(249, 244, 244, 0.791);
+  font-family: "Inria Serif", serif;
+}
