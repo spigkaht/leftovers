@@ -7,5 +7,10 @@ class Recipe < ApplicationRecord
 
   # CUSTOM METHOD TO FILTER YO
   scope :by_cuisine, ->(cuisine) { where(cuisine: cuisine) }
-  scope :by_ingredient, ->(ingredients) { joins(:ingredients).where(ingredients: { id: ingredients }) }
+  scope :by_ingredient, ->(ingredients) {
+    joins(:ingredients).where(
+      ingredients.map { |ingredient| "ingredients.name LIKE ?" }.join(' OR '),
+      *ingredients.map { |ingredient| "%#{ingredient}%" }
+    ).distinct
+  }
 end

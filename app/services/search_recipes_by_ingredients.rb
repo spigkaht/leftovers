@@ -18,13 +18,6 @@ class SearchRecipesByIngredients
       id_array = (results_array.map do |results_hash|
                   results_hash["id"]
                   end)
-      id_ingredient_array = (results_array.map do |results_hash|
-                             {
-                             id: results_hash["id"],
-                             missedIngredients: results_hash["missedIngredients"],
-                             missedIngredientCount: results_hash["missedIngredientCount"]
-                             }
-                             end)
       recipe_ids = id_array.join(',')
 
       url = URI("https://api.spoonacular.com/recipes/informationBulk?ids=#{recipe_ids}&apiKey=#{ENV['SPOONACULAR_API_KEY']}")
@@ -69,5 +62,10 @@ class SearchRecipesByIngredients
 
   def format_ingredients
     @user.ingredients.map {|ingredient| ingredient.name}.join(',')
+  end
+
+  def match_missing_ingredients_call
+    # call API search with ingredients from fridge
+    # 
   end
 end

@@ -51,15 +51,14 @@
   </div>
    <div class="recipes-index-filters d-flex flex-column align-items-center px-5 py-3">
     <% selected_ingredients = params[:ingredients] || [] %>
-    <% selected_ingredients = selected_ingredients.map(&:to_i) %> <!-- Ensure all IDs are integers -->
     <h2>Filter by Ingredient</h2>
     <% current_user.ingredients.each do |ingredient| %>
-      <% if selected_ingredients.include?(ingredient.id) %>
+      <% if selected_ingredients.include?(ingredient.name) %>
         <%# ACTIVE %>
-        <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients - [ingredient.id]), class: "btn btn-lg btn-outline-dark w-75 mt-2", style: "background: blue; color: white;" %>
+        <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients - [ingredient.name]), class: "btn btn-lg btn-outline-dark w-75 mt-2", style: "background: blue; color: white;" %>
       <% else %>
         <%# NON ACTIVE %>
-        <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients + [ingredient.id]), class: "btn btn-lg btn-outline-dark w-75 mt-2" %>
+        <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients + [ingredient.name]), class: "btn btn-lg btn-outline-dark w-75 mt-2" %>
       <% end %>
     <% end %>
     <% selected_cuisine = params[:cuisine] || "" %>
