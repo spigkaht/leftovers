@@ -63,4 +63,9 @@ class SearchRecipesByIngredients
   def format_ingredients
     @user.ingredients.map {|ingredient| ingredient.name}.join(',')
   end
+
+  def match_missing_ingredients_call
+    # call API search with ingredients from fridge
+    # 
+  end
 end
