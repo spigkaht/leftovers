@@ -51,22 +51,19 @@
     "slnt" 0;
 }
 
-$my-font-main: 'Inria Sans';
-$my-font-other: 'Inria Sans';
+@font-face {
+  font-family: "Uncut Sans";
+  src: font-url('UncutSans-Variable.woff2') format('woff2');
+}
+
+$my-font-main: 'Uncut Sans';
+$my-font-other: 'Uncut Sans';
 
 // Define fonts for body and headers
 $body-font: $my-font-main, "Work Sans", "Helvetica", "sans-serif";
 $headers-font: $my-font-other, "Nunito", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
-// @font-face {
-  //   font-family: "Font Name";
-  //   src: font-url('FontFile.eot');
-  //   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-  //        font-url('FontFile.woff') format('woff'),
-  //        font-url('FontFile.ttf') format('truetype')
-  // }
-  // $my-font: "Font Name";
 
   // fonts did not load... keeping temporarily
   // @font-face {

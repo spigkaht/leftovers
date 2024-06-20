@@ -8,8 +8,8 @@
           <% current_user.user_ingredients.each do |user_ingredient| %>
             <li class="fridge-ingredient">
               <%= user_ingredient.ingredient.name.capitalize %>
-              <%= link_to "/user_ingredients/#{user_ingredient.id}", data: {turbo_method: :delete} do %>
-                <i class="fa-regular fa-circle-xmark" style="color: #f33939;"></i>
+              <%= link_to "/user_ingredients/#{user_ingredient.id}", data: {turbo_method: :delete}, class: "ingredient-x-btn" do %>
+                <i class="fa-solid fa-xmark"></i>
               <% end %>
             </li>
           <% end %>

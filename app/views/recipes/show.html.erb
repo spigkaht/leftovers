@@ -39,16 +39,16 @@
           </ul>
         </div>
       </div>
-      <div class="recipe-ingredient-card d-flex flex-column">
-        <h3 id="Ingredients">Shopping List</h3>
-        <div class="recipe-ingredients d-flex">
-          <ul>
-            <% @content.each do |ingredient| %>
-              <li><%= ingredient.strip.capitalize %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+      <%#<div class="recipe-ingredient-card d-flex flex-column">
+        <%# <h3 id="Ingredients">Shopping List</h3>
+        <%#<div class="recipe-ingredients d-flex">
+          <%#<ul>
+            <%#<% @content.each do |ingredient| %>
+              <%#= ingredient.strip.capitalize %>
+            <%# end %>
+          <%#</ul>
+        <%#</div>
+      <%#</div>%>
     </div>
     <div class="recipe-instructions d-flex flex-column">
       <h3>Instructions</h3>
