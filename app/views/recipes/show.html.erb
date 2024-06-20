@@ -8,9 +8,9 @@
         <h2><%=@recipe.title%></h2>
       </div>
       <div class="recipe-info-details d-flex">
-        <i class="fa-solid fa-earth-americas" style="color: #FFF3E0;"> : </i> <%= @recipe.cuisine %></p>
-        <i class="fa-solid fa-person" style="color: #FFF3E0;"> : </i> <%= @recipe.servings %></p>
-        <i class="fa-regular fa-clock" style="color: #FFF3E0"> : </i>  <%= @recipe.cook_time %> Minutes</p>
+        <i class="fa-solid fa-earth-americas" style="color: #e67e22;"> : </i> <%= @recipe.cuisine %></p>
+        <i class="fa-solid fa-person" style="color: #e67e22;"> : </i> <%= @recipe.servings %></p>
+        <i class="fa-regular fa-clock" style="color: #e67e22"> : </i>  <%= @recipe.cook_time %> Minutes</p>
       </div>
       <%= turbo_frame_tag dom_id(@recipe, :favourite_btn), class: "recipe-card-heart" do %>
         <% favourite_for_recipe = current_user.find_favourite_for_recipe(@recipe) %>
