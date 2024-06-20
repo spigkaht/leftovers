@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import ScrollTo from 'stimulus-scroll-to'
+import ScrollTo from '@stimulus-components/scroll-to'
 
 // Connects to data-controller="scroll-to"
 export default class extends ScrollTo {

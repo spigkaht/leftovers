@@ -5,17 +5,32 @@
   margin: 2rem auto 0 auto;
 }
 
+.recipe-show-img {
+  height: 250px;
+  width: 250px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  position: absolute;
+  top: -215px;
+  left: 42px;
+  box-shadow: 0px 4px 10px -5px rgba(0, 0, 0, 0.3);
+  border: 1px solid #9E9E9E;
+}
+
 .search-banner {
   position: relative;
+  z-index: -1;
   background: linear-gradient(
     rgba(0, 0, 0, 0.7),  /* Top color with 50% opacity */
     rgba(0, 0, 0, 0.1)   /* Bottom color with 50% opacity */
     ),
-    asset-url("veggies.jpg");
+    asset-url("booiief.jpg");
   background-size: cover;
   padding: 150px 0;
   background-repeat: no-repeat;
   background-position: center;
+  height: 450px;
 }
 
 .bg-blur {

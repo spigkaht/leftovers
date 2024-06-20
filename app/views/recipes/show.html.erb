@@ -3,7 +3,9 @@
 </div>
 <div class="container pb-4 z-3 position-relative" style="margin-top: -100px;">
   <div class="fridge-card-container">
-    <div class="d-flex justify-content-between align-items-start">
+    <%# ABSOLUTE IMAGE %>
+    <div class="recipe-show-img" style="background-image: url('<%= @recipe.image_url %>');"></div>
+    <div class="d-flex justify-content-between align-items-start pt-4">
       <%# TITLE %>
       <h2><%=@recipe.title%></h2>
       <%# HEART BTN %>
