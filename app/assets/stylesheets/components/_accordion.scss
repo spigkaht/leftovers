@@ -1,0 +1,15 @@
+.accordion {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #9E9E9E;
+
+  .accordion-item {
+    border: none;
+    border-bottom: 1px solid #9E9E9E;
+    border-radius: 0px;
+  }
+
+  .accordion-item:last-of-type {
+    border-bottom: none!important;
+  }
+}

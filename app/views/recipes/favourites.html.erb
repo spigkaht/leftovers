@@ -3,7 +3,7 @@
 <div class="container py-4">
   <div class="recipe-favourites-container">
     <% @favourites.each do |favourite| %>
-      <%= render "shared/card", :recipe => favourite.recipe %>
+      <%= render "recipes/card", :recipe => favourite.recipe %>
     <% end %>
   </div>
 </div>

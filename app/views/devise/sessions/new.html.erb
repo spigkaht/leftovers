@@ -1,12 +1,5 @@
-<div class="log-in-container">
-<div class="row">
-
-<div class="sm-col-12 col-8">
-<%= image_tag "loginpage.jpg", class: "w-100" %>
-</div>
-
-<div class="sm-col-12 col-4">
-  <h1 class="form">Log in</h1>
+<%= render 'shared/split_view', img_url: image_path('loginpage.jpg') do %>
+  <h1>Log in</h1>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs registration-inputs">
@@ -22,11 +15,7 @@
 
     <div class="form-actions">
       <%= f.button :submit, "Log in", class: "btn-lg btn-outline-dark w-100" %>
-  <% end %>
-<%= render "devise/shared/links" %>
     </div>
-</div>
-
-
-</div>
-</div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+<% end %>
