@@ -62,6 +62,16 @@
   width: 40%;
 }
 
+.recipe-ingredients {
+  border: 1px solid #9E9E9E;
+  border-radius: 8px;
+
+  ul {
+    padding-left: 1.3rem;
+    margin: 0;
+  }
+}
+
 .recipe-ingredient-card {
   height: fit-content;
   box-shadow: 0px 0px 4px 2px lightgrey;
@@ -109,17 +119,19 @@
 
 .step-icon {
   position: relative;
-  margin-right: 2px;
-  margin-bottom: 5px;
   width: 30px;
   height: 30px;
-  background: #e67e22;
+  background: #FF5722;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 40px;
-  margin-right: 10px;
+}
+
+.instruction-text {
+  font-size: 1.2rem;
+  color: #464646;
 }
 
 #numbers {

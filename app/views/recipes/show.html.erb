@@ -1,37 +1,42 @@
-<div class="recipe-container dflex flex-column">
-  <div class="recipe-header d-flex">
-    <div class="recipe-photo">
-      <%= image_tag @recipe.image_url %>
-    </div>
-    <div class="recipe-info d-flex flex-column">
-      <div class="recipe-info-title">
-        <h2><%=@recipe.title%></h2>
-      </div>
-      <div class="recipe-info-details d-flex">
-        <i class="fa-solid fa-earth-americas" style="color: #e67e22;"> : </i> <%= @recipe.cuisine %></p>
-        <i class="fa-solid fa-person" style="color: #e67e22;"> : </i> <%= @recipe.servings %></p>
-        <i class="fa-regular fa-clock" style="color: #e67e22"> : </i>  <%= @recipe.cook_time %> Minutes</p>
-      </div>
-      <%= turbo_frame_tag dom_id(@recipe, :favourite_btn), class: "recipe-card-heart" do %>
+<div class="search-banner z-0" style="background-image: url('<%= @recipe.image_url %>');">
+  <div class="bg-blur"></div>
+</div>
+<div class="container pb-4 z-3 position-relative" style="margin-top: -100px;">
+  <div class="fridge-card-container">
+    <div class="d-flex justify-content-between align-items-start">
+      <%# TITLE %>
+      <h2><%=@recipe.title%></h2>
+      <%# HEART BTN %>
+      <%= turbo_frame_tag dom_id(@recipe, :favourite_btn) do %>
         <% favourite_for_recipe = current_user.find_favourite_for_recipe(@recipe) %>
         <% if favourite_for_recipe.nil? %>
-          <%= link_to recipe_favourites_path(@recipe), data: { turbo_method: :post } do %>
+          <%= link_to recipe_favourites_path(@recipe), data: { turbo_method: :post }, class: 'btn btn-lg btn-outline-dark' do %>
             <i class="fa-regular fa-heart"></i>
           <% end %>
         <% else %>
           <%# link to destroy the favourite %>
-          <%= link_to favourite_path(favourite_for_recipe), data: { turbo_method: :delete } do %>
+          <%= link_to favourite_path(favourite_for_recipe), data: { turbo_method: :delete }, class: 'btn btn-lg btn-dark' do %>
             <i class="fa-solid fa-heart"></i>
           <% end %>
         <% end %>
       <% end %>
     </div>
+    <div class="recipes-index-card-info" data-favourite-target="recipe">
+      <p class=""><%= @recipe.servings %> servings</p>
+      <i class="fa-solid fa-circle recipes-index-card-heart-circle"></i>
+      <i class="fa-regular fa-clock"></i>
+      <p class=""><%= @recipe.cook_time %> mins</p>
+    </div>
   </div>
-  <div class="d-flex">
-    <div class="recipe-details-container d-flex flex-column">
-      <div class="recipe-ingredient-card d-flex flex-column">
-        <h3 id="Ingredients">Ingredients</h3>
-        <div class="recipe-ingredients d-flex">
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4 pe-4">
+      <%# INGREDIENTS %>
+      <div class="mb-4" >
+        <h3>Ingredients</h3>
+        <div class="recipe-ingredients p-3">
           <ul>
             <% @recipe.ingredients.each do |ingredient| %>
               <li><%= ingredient.name.capitalize %></li>
@@ -39,6 +44,7 @@
           </ul>
         </div>
       </div>
+
       <%#<div class="recipe-ingredient-card d-flex flex-column">
         <%# <h3 id="Ingredients">Shopping List</h3>
         <%#<div class="recipe-ingredients d-flex">
@@ -50,16 +56,19 @@
         <%#</div>
       <%#</div>%>
     </div>
-    <div class="recipe-instructions d-flex flex-column">
-      <h3>Instructions</h3>
+    <div class="col-8">
+      <%# INSTRUCTIONS %>
+      <div>
+        <h3>Instructions</h3>
         <% @recipe.method.each_with_index do |step, index| %>
-        <div class="instruction-card d-flex">
-        <div class="step-icon">
-        <div id="numbers"><%= index + 1 %></div>
-        </div>
-        <%= step["step"]%>
-        </div>
+          <div class="pb-1 d-flex">
+            <div class="step-icon me-3">
+              <div id="numbers"><%= index + 1 %></div>
+            </div>
+            <p class="instruction-text pb-0"><%= step["step"]%></p>
+          </div>
         <% end %>
+      </div>
     </div>
   </div>
 </div>

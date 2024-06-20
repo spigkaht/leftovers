@@ -26,10 +26,14 @@ h1.form {
   font-style: normal;
 }
 
-.registration-inputs {
+.form-inputs {
   input {
     border: 1px solid black;
     font-size: large;
+
+    &:focus {
+      border: 2px solid black;
+    }
   }
 }
 

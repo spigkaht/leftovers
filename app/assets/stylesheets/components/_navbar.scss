@@ -16,7 +16,7 @@
 }
 
 .form-control {
-  height: 58px;
+  height: 50px;
 }
 
 .fridge-card-container {
@@ -81,6 +81,7 @@
   width: 100vw;
   top: 0;
   transition: 0.5s ease;
+  z-index: 9999;
 }
 
 .new-navbar.active {

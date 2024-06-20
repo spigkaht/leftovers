@@ -6,15 +6,25 @@
 }
 
 .search-banner {
-
+  position: relative;
   background: linear-gradient(
     rgba(0, 0, 0, 0.7),  /* Top color with 50% opacity */
     rgba(0, 0, 0, 0.1)   /* Bottom color with 50% opacity */
     ),
     asset-url("veggies.jpg");
-    background-size: cover;
-    padding: 150px 0;
+  background-size: cover;
+  padding: 150px 0;
   background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-blur {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(100px) saturate(120%);
 }
 
 .temp-navbar {
@@ -104,8 +114,14 @@
   }
 }
 
-.accordion {
-  width: 8rem !important;
+// .accordion {
+//   width: 8rem !important;
+// }
+
+.accordion-button {
+  box-shadow: none;
+  border-color: rgba(0,0,0,.125);
+  background-color: white;
 }
 
 .accordion-button:focus {
