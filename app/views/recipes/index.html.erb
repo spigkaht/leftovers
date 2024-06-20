@@ -2,7 +2,7 @@
   <div class="search-banner"></div>
   <div class="container pb-4" style="margin-top: -100px;">
     <div class="fridge-card-container">
-      <h3>Your fridge</h3>
+      <h3 id="awesome-stuff-here">YOUR FRIDGE</h3>
       <ul id="ingredientsList" class="ingredients-list">
         <% if current_user.user_ingredients.any? %>
           <% current_user.user_ingredients.each do |user_ingredient| %>
@@ -130,4 +130,18 @@
       </div>
     </div>
   </div>
+</div>
+
+</div>
+    <div class="recipes-index-card-container">
+      <% if @recipes.empty? %>
+        <p>You got 99 problems but a recipe ain't one</p>
+      <% else %>
+        <% @recipes.each do |recipe| %>
+          <%= render "shared/card", :recipe => recipe %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+    <a href="#awesome-stuff-here" class="sticky-bottom" data-controller="scroll-to"><i class="up-arrow fa-solid fa-circle-up fa-2xl" style="color: #000000;"></i></a>
 </div>
