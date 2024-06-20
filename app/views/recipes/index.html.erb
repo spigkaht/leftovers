@@ -2,14 +2,14 @@
   <div class="search-banner"></div>
   <div class="container pb-4" style="margin-top: -100px;">
     <div class="fridge-card-container">
-      <h3>YOUR FRIDGE</h3>
+      <h3>Your fridge</h3>
       <ul id="ingredientsList" class="ingredients-list">
         <% if current_user.user_ingredients.any? %>
           <% current_user.user_ingredients.each do |user_ingredient| %>
             <li class="fridge-ingredient">
               <%= user_ingredient.ingredient.name.capitalize %>
-              <%= link_to "/user_ingredients/#{user_ingredient.id}", data: {turbo_method: :delete} do %>
-                <i class="fa-regular fa-circle-xmark" style="color: #f33939;"></i>
+              <%= link_to "/user_ingredients/#{user_ingredient.id}", data: {turbo_method: :delete}, class: "ingredient-x-btn" do %>
+                <i class="fa-solid fa-xmark"></i>
               <% end %>
             </li>
           <% end %>

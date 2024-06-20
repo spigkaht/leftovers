@@ -75,18 +75,32 @@
   background-color: white;
   width: -moz-min-content;
   width: min-content;
-  padding: 8px;
+  padding: 8px 8px 8px 15px;
   border-radius: 24px;
   margin: 4px;
   display: flex;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #a3a3a3;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-}
 
-.fridge-ingredient {
-  a {
-    margin-left: 6px;
+
+  .ingredient-x-btn {
+    margin-left: 10px;
+    padding: 4px;
+    border-radius: 20px;
+    background: transparent;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #9E9E9E;
+
+    &:hover {
+      color: rgb(134, 9, 9);
+      background: rgb(255, 166, 166);
+    }
   }
 }
 
