@@ -48,40 +48,63 @@
 <% end %>
 
 <div class="container">
-  <div class="recipes-index-content">
+  <div class="d-flex flex-row">
+<div>
+  <h3>Filters</h3>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Ingredients
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       <% selected_ingredients = params[:ingredients] || [] %>
+      <% selected_ingredients = selected_ingredients.map(&:to_i) %> <!-- Ensure all IDs are integers -->
+      <% current_user.ingredients.each do |ingredient| %>
+        <% if selected_ingredients.include?(ingredient.id) %>
+          <%# ACTIVE %>
+          <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients - [ingredient.id]), class: "btn btn-sm btn-outline-dark w-100 mt-2", style: "background: blue; color: white;" %>
+        <% else %>
+          <%# NON ACTIVE %>
+          <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients + [ingredient.id]), class: "btn btn-sm btn-outline-dark w-100 mt-2" %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Cuisine
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body !w-15">
+        <% selected_cuisine = params[:cuisine] || "" %>
+      <% @recipe_cuisines.each do |cuisine| %>
+        <% if cuisine != "None" %>
+          <% if cuisine == selected_cuisine %>
+            <%# ACTIVE %>
+            <%= link_to cuisine, recipes_path(cuisine: cuisine), class: "btn btn-sm btn-outline-dark w-100 mt-2", style: "background: blue; color: white;" %>
+        <% else %>
+            <%# NON ACTIVE %>
+            <%= link_to cuisine, recipes_path(cuisine: cuisine), class: "btn btn-sm btn-outline-dark w-100 mt-2" %>
+          <% end %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
     <div class="recipes-index-card-container">
       <% if @recipes.empty? %>
         <p>You got 99 problems but a recipe card ain't one</p>
       <% else %>
         <% @recipes.each do |recipe| %>
           <%= render "shared/card", :recipe => recipe %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="recipes-index-filters d-flex flex-column align-items-center px-5 py-3">
-      <% selected_ingredients = params[:ingredients] || [] %>
-      <% selected_ingredients = selected_ingredients.map(&:to_i) %> <!-- Ensure all IDs are integers -->
-      <h2>Filter by Ingredient</h2>
-      <% current_user.ingredients.each do |ingredient| %>
-        <% if selected_ingredients.include?(ingredient.id) %>
-          <%# ACTIVE %>
-          <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients - [ingredient.id]), class: "btn btn-lg btn-outline-dark w-75 mt-2", style: "background: blue; color: white;" %>
-        <% else %>
-          <%# NON ACTIVE %>
-          <%= link_to ingredient.name.capitalize, recipes_path(ingredients: selected_ingredients + [ingredient.id]), class: "btn btn-lg btn-outline-dark w-75 mt-2" %>
-        <% end %>
-      <% end %>
-      <% selected_cuisine = params[:cuisine] || "" %>
-      <h2 class="mt-3">Filter by Cuisine</h2>
-      <% @recipe_cuisines.each do |cuisine| %>
-        <% if cuisine != "None" %>
-          <% if cuisine == selected_cuisine %>
-            <%# ACTIVE %>
-            <%= link_to cuisine, recipes_path(cuisine: cuisine), class: "btn btn-lg btn-outline-dark w-75 mt-2", style: "background: blue; color: white;" %>
-        <% else %>
-            <%# NON ACTIVE %>
-            <%= link_to cuisine, recipes_path(cuisine: cuisine), class: "btn btn-lg btn-outline-dark w-75 mt-2" %>
-          <% end %>
         <% end %>
       <% end %>
     </div>

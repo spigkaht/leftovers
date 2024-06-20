@@ -31,12 +31,12 @@
   flex-direction: column;
 }
 
-.recipes-index-content {
-  display: flex;
-}
+// .recipes-index-content {
+//   display: flex;
+// }
 
 .recipes-index-filters {
-  background-color: $my-orange;
+
   box-shadow: 2px 2px 2px lightgrey;
   border-radius: 5px;
   height: fit-content;
@@ -88,4 +88,14 @@
   a {
     margin-left: 6px;
   }
+}
+
+.accordion {
+  width: 8rem !important;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0,0,0,.125);
+  background-color: white;
 }
