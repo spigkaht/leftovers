@@ -101,7 +101,7 @@
 </div>
     <div class="recipes-index-card-container">
       <% if @recipes.empty? %>
-        <p>You got 99 problems but a recipe card ain't one</p>
+        <p>You got 99 problems but a recipe ain't one</p>
       <% else %>
         <% @recipes.each do |recipe| %>
           <%= render "shared/card", :recipe => recipe %>
