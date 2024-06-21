@@ -1,0 +1,5 @@
+ meta_product_name: "LeftOvers"
+ meta_title: "LeftOvers - Learn to Leave Nothing"
+ meta_description: "Find recipes to use up what's in your fridge"
+ meta_image: "SUBSCRIBE.png" # should exist in `app/assets/images/`
+#  twitter_account: "@product_twitter_account" # required for Twitter Cards
